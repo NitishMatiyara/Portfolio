@@ -29,6 +29,9 @@ app.use(express.static(path.join(__dirname, "static")))
 app.use(express.urlencoded())
 app.engine('html', require('ejs').renderFile)
 
+app.get('/', (req, res) => {
+  res.status(200).render("index.html")
+})
 
 app.get('/index.html', (req, res) => {
   res.status(200).render("index.html")
