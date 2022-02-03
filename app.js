@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const bodyparser = require("body-parser")
 const mongoose = require('mongoose');
-const port = 8001;
+const port = process.env.PORT || 8001;
 
 main().catch(err => console.log(err));
 
