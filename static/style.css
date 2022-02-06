@@ -137,8 +137,9 @@ font-size: 15px;
   width: 0ch;
   overflow: hidden;
   white-space: nowrap;
-  animation: mytext 6s steps(12) infinite alternate ;
+  animation: mytext 6s steps(13) infinite alternate ;
   border-right: 2px solid crimson;
+  display: inline-flex;
 }
 /* animation */
 @keyframes mytext {
@@ -146,7 +147,7 @@ font-size: 15px;
     width: 0ch;
   }
   50%{
-    width: 12ch;
+    width: 13ch;
   }
 }
 
