@@ -27,8 +27,8 @@ scrollUp.addEventListener("click", ()=>{
 // Toggle menu/navbar
 const togle = document.querySelector(".menu-btn")
 const dropMenu = document.querySelector(".menu")
-const drop = document.querySelector(".slide")
+const drop = document.getElementById("slide")
 togle.addEventListener("click", ()=>{
+ dropMenu.classList.toggle("active")
    drop.classList.toggle("active")
-   
 })

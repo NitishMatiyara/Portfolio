@@ -520,9 +520,11 @@ footer span a:hover{
     display: block;
     z-index: 999;
   }
-  .menu-btn:hover .fa-bars.active:before {
-    content: "\f00d";
+  .menu-btn i.active::before {
+    
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00d"
   }
+
   .navbar .menu {
     position: fixed;
     height: 100vh;
