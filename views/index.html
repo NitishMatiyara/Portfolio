@@ -105,7 +105,7 @@
                 <div class="text"></div>
                     <img src="../images/M.png" alt="">
                     <img src="../images/B.png" alt="">
-                    <img src="../images/T.png" alt="">
+                    <img src="../images/C.png" alt="">
             </div>
             <div class="column right">
                 <div class="bars">
@@ -182,20 +182,24 @@
             </div>
             <div class="column right">
                 <div class="text">Message Me</div>
-                <form action="/index.html", method="post", class="myForm">
+                <form action="/index.html", method="post", class="myForm" onsubmit="return validation()">
                     <div class="fields">
                         <div class="field name">
-                            <input type="text" name="name" placeholder="Name" required>
+                            <input type="text" name="name" id="username" placeholder="Name">
+                            <span id="errorname" class="text-error"></span>
                         </div>
                         <div class="field email">
-                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="email" name="email" id="useremail" placeholder="Email">
+                            <span id="erroremail"class="text-error"></span>
                         </div>
                     </div>
                     <div class="field">
-                        <input type="text" name="subject" placeholder="Subject" required>
+                        <input type="text" name="subject" id="usermobile" placeholder="Mobile">
+                        <span id="errormobile"class="text-error"></span>
                     </div>
                     <div class="field textarea">
-                       <textarea name="desc" cols="30" rows="10" placeholder="Describe project..." required></textarea>
+                       <textarea name="desc" cols="30" rows="10" id="userdesc" placeholder="Describe project..."></textarea>
+                       <span id="errordesc"class="text-error"></span>
                     </div>
                     <div class="button">
                         <button>Send message</button>
