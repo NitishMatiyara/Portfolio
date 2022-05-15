@@ -125,7 +125,8 @@ html{
   margin-left: -3px;
 }
 .home .home-content .text-2 span{
-font-size: 15px;
+font-size: 10px;
+opacity: 0.2;
 }
 .home .home-content .text-3 {
   font-size: 40px;
