@@ -1,55 +1,58 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 const app = express();
-const bodyparser = require("body-parser")
-const mongoose = require('mongoose');
+const bodyparser = require("body-parser");
+const mongoose = require("mongoose");
+const connectDB = require("./config/db");
 const port = process.env.PORT || 8001;
 
-main().catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect('mongodb://localhost/contactMe',{useNewUrlParser: true,
-  useUnifiedTopology: true,});
-}
+require("dotenv").config();
+connectDB();
 
 // Define Mongoose Schema
 const contactSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    subject: String,
-    desc: String
-  });
+  name: String,
+  email: String,
+  subject: String,
+  description: String,
+});
 
-const Contact = mongoose.model('Contact', contactSchema);
-
+const contact = mongoose.model("contact", contactSchema);
 
 // Express stuff
-app.use(express.static(path.join(__dirname, "static")))
-app.use(express.urlencoded())
+app.use(express.static(path.join(__dirname, "static")));
+app.use(express.urlencoded());
 
-app.set('views', path.join(__dirname,  'views'));
+app.set("views", path.join(__dirname, "views"));
 
+app.engine("html", require("ejs").renderFile);
 
-app.engine('html', require('ejs').renderFile)
+app.get("/", (req, res) => {
+  res.status(200).render("index.html");
+});
 
-app.get('/', (req, res) => {
-  res.status(200).render("index.html")
-})
+app.get("/index.html", (req, res) => {
+  res.status(200).render("index.html");
+});
 
-app.get('/index.html', (req, res) => {
-  res.status(200).render("index.html")
-})
+app.post("/index.html", async (req, res) => {
+  const myData = new contact(req.body);
+  const { name, email, subject, description } = myData;
+  const isUser = await contact.findOne({ name, email, subject, description });
+  if (isUser) {
+    res.send("User info already exist");
+  } else {
+    myData
+      .save()
+      .then(() => {
+        res.send("Message sent successfully");
+      })
+      .catch(() => {
+        res.send("Failed sending message.");
+      });
+  }
+});
 
-app.post('/index.html', (req, res) => {
-    var myData = new Contact(req.body)
-    myData.save().then(()=>{
-        res.send("Contact saved to the database")
-            // res.status(400).send("Contact not saved to the database")
-        })
-    });
-
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
-
-
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
