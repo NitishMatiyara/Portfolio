@@ -125,7 +125,7 @@ html {
 }
 .home .home-content .text-2 span {
   font-size: 10px;
-  opacity: 0.1;
+  opacity: 0.04;
 }
 .home .home-content .text-3 {
   font-size: 40px;
@@ -328,7 +328,7 @@ section .title::after {
 .skills .skill-card {
   display: flex;
   justify-content: space-around;
-  margin-top: 7rem;
+  margin-top: 5rem;
 }
 .skills .skill-card span {
   font-weight: bold;
