@@ -21,7 +21,7 @@ const contact = mongoose.model("contact", contactSchema);
 
 // Express stuff
 app.use(express.static(path.join(__dirname, "static")));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 app.set("views", path.join(__dirname, "views"));
 
