@@ -37,7 +37,7 @@ app.get("/index.html", (req, res) => {
 });
 
 // POST handler
-app.post("/index.html", async (req, res) => {
+app.post("/submit", async (req, res) => {
   try {
     // 🛡️ 1. Verify reCAPTCHA
     const token = req.body["g-recaptcha-response"];
