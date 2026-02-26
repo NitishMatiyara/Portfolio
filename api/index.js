@@ -15,8 +15,7 @@ const app = express();
 // FIXED PATHS
 const ROOT = path.join(__dirname, "..");
 
-app.use(express.static(path.join(ROOT, "static")));
-app.set("views", path.join(ROOT, "views"));
+app.use("/static", express.static(path.join(process.cwd(), "static")));
 app.use(express.urlencoded({ extended: true }));
 
 app.engine("html", require("ejs").renderFile);
