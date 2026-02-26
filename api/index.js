@@ -12,11 +12,13 @@ connectDB(); // connect once
 
 const app = express();
 
-// FIX: Serve static + views from PROJECT ROOT
-app.use(express.static(path.join(__dirname, "..", "static")));
+// FIXED PATHS
+const ROOT = path.join(__dirname, "..");
+
+app.use(express.static(path.join(ROOT, "static")));
+app.set("views", path.join(ROOT, "views"));
 app.use(express.urlencoded({ extended: true }));
 
-app.set("views", path.join(__dirname, "..", "views"));
 app.engine("html", require("ejs").renderFile);
 
 // Schema
