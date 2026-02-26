@@ -12,13 +12,18 @@ connectDB(); // connect once
 
 const app = express();
 
-// FIXED PATHS
-const ROOT = path.join(__dirname, "..");
+// CORRECT ROOT PATH FOR SERVERLESS ENVIRONMENT
+const ROOT = process.cwd();
 
-app.use("/static", express.static(path.join(process.cwd(), "static")));
+// Serve static folder from root/static → available at /static/*
+app.use("/static", express.static(path.join(ROOT, "static")));
+
+// Parse form data
 app.use(express.urlencoded({ extended: true }));
 
+// Allow rendering .html using EJS
 app.engine("html", require("ejs").renderFile);
+
 
 // Schema
 const contactSchema = new mongoose.Schema({
